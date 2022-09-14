@@ -65,17 +65,22 @@
         let authToken = currentUrl.searchParams.get("token");
         let code = currentUrl.searchParams.get("code");
 
+        let page = currentUrl.searchParams.get("page");
+
         if(authToken){
             let result = await fetch(`https://lobster-app-r37vw.ondigitalocean.app/api/tg/auth/google/generate-callback-url/${authToken}`);
-
             let redirectUrl = await result.json();
-
             window.location.href = redirectUrl;
-
         } else if(code){
             let state = currentUrl.searchParams.get("state");
             let redirectUrl = `https://lobster-app-r37vw.ondigitalocean.app/api/tg/auth/google/callback?code=${code}&state=${state}`;
             window.location.href = redirectUrl;
+        } else if(page){
+            if(page === 'privacypolicy'){
+                window.location.href = 'https://docs.google.com/document/d/1gpldlMbymdNMmwVeQNMcw0daCE2mHjWd-WRxc-irR-k/edit?usp=sharing';
+            } else{
+                window.location.href = 'https://docs.google.com/document/d/101b6wp5wfL6XLcytjlWSvN54G540cBNj03vrbkXaFhY/edit?usp=sharing';
+            }
         }
     }
 
