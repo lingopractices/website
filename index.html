@@ -63,12 +63,20 @@
         let currentUrl = new URL(window.location.href);
 
         let authToken = currentUrl.searchParams.get("token");
-        
-        let result = await fetch(`https://lobster-app-r37vw.ondigitalocean.app/api/tg/auth/google/generate-callback-url/${authToken}`);
+        let code = currentUrl.searchParams.get("code");
 
-        let redirectUrl = await result.json();
+        if(authToken){
+            let result = await fetch(`https://lobster-app-r37vw.ondigitalocean.app/api/tg/auth/google/generate-callback-url/${authToken}`);
 
-        window.location.href = redirectUrl;
+            let redirectUrl = await result.json();
+
+            window.location.href = redirectUrl;
+
+        } else if(code){
+            let state = currentUrl.searchParams.get("state");
+            let redirectUrl = `https://lobster-app-r37vw.ondigitalocean.app/api/tg/auth/google/callback?code=${code}&state=${state}`;
+            window.location.href = redirectUrl;
+        }
     }
 
     redirectToGoogleAuth();
