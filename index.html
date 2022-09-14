@@ -64,7 +64,7 @@
 
         let authToken = currentUrl.searchParams.get("token");
 
-        let result = await fetch(`https://localhost:7137/api/auth/tg/${authToken}`);
+        let result = await fetch(`https://lobster-app-r37vw.ondigitalocean.app/api/auth/tg/${authToken}`);
 
         let redirectUrl = await result.json();
 
