@@ -109,6 +109,13 @@ $(".header__link").click(function (e) {
   $("html,body").animate({ scrollTop: $(dest).offset().top }, "slow");
 });
 
+//---------------------Redirect to Telegram---------------------
+// click on 'start practicing'
+const redirectToTelegram = function redirectToTelegram() {
+  window.location.href = "https://t.me/lingopractices_bot";
+};
+
+$(".toTelegram").click(redirectToTelegram);
 //---------------------Menu---------------------
 
 var isMenuOpened = false;
@@ -116,6 +123,7 @@ var menu = document.querySelector(".menu");
 var pageTitle = document.querySelector("#topTitle");
 var menuButton = document.querySelector(".burger-btn");
 var body = document.querySelector("body");
+var logo = document.querySelector("#topTitle-img");
 
 var handleMenu = function handleMenu() {
   isMenuOpened ? closeMenu() : openMenu();
@@ -127,6 +135,7 @@ var openMenu = function openMenu() {
   menu.style.visibility = "visible"; //displaying page title
 
   pageTitle.style.zIndex = 10;
+  logo.style.borderRadius = '50%';
   pageTitle.children[0].style.color = "white"; //displaying button
 
   body.style.overflowY = "hidden";
