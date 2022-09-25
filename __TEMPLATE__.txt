@@ -1,0 +1,15 @@
+[engerius.com] New message from {{name}}
+
+
+
+Hello Developer,
+
+You got a new message from: {{name}}
+
+Contact email: {{email}}
+
+Phone: {{phone}}
+
+Budget: {{budget}}
+
+Details: {{details}}

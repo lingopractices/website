@@ -1,0 +1,18 @@
+.contact-icons {
+  display: none;
+
+  @media (min-width: $bp-medium) {
+    display: block;
+    position: absolute;
+    top: 46.6rem;
+    transform: translateX(4rem);
+
+    a {
+      display: block;
+
+      &:not(:last-child) {
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}
