@@ -361,8 +361,8 @@
   </section>
   <header class="header">
     <nav class="header__nav">
-      
-      <h1 id="topTitle"><img id="topTitle" style="width: 50px" src="./img/svg/logo.svg"></img></h1>
+      <h1 id="topTitle"><a href="#" style="color: #4e5cdf;">lingopractices</a></h1>
+      <!-- <h1 id="topTitle"><a href="#" style="color: #4e5cdf;"><img id="topTitle" style="width: 50px" src="./img/svg/logo.svg"></img></a></h1> -->
       <div class="header__link-block">
         <a href="#howToCreateMeeting" class="header__link">How to create a meeting?
           <div class="header__hover"></div>
@@ -408,7 +408,7 @@
           </div>
         </button>
       </div>
-      <img src="./img/_467975184.svg" alt="here should be an img" class="header__img" />
+      <img src="./img/header-illustration.svg" alt="here should be an img" class="header__img" />
     </div>
   </header>
   <section class="process-restyled" id="howToCreateMeeting">
@@ -468,10 +468,7 @@
     <h2>Why people choose us</h2>
     <div class="choose__top">
       <p>
-        LINGOPRACTICES Labs is a team that combines deep practical experience in
-        software development and business experience that lets us be on the
-        same wave with any type of partner. But qualities that really makes us
-        different are:
+        At Lingo Practices we made the process of finding partners for practicing languages as simple as possible:
       </p>
       <button class="choose__btn blue-btn toContact">
         Start Practicing
@@ -538,12 +535,12 @@
     </div>
   </section>
   <section id="contact" class="contact">
-    <h2>Ready to Rock</h2>
-    <p>
+    <h2>Let us know what you think</h2>
+    <!-- <p>
       We’ve worked with clients of all sizes, from enterprise brands to funded
       startups. Let’s talk about your project and how we can help provide
       value.
-    </p>
+    </p> -->
     <form class="contact__form" id="contact__form" action="" method="POST">
       <input type="text" name="name" placeholder="Name" class="contact__name" required />
       <input type="email" name="email" placeholder="Email" class="contact__email" required />
@@ -618,5 +615,31 @@
   <script src="./js/jQuery/jquery-migrate-3.4.0.min.js"></script>
   <script src="./js/index.es5.js"></script>
 </body>
+
+<script>
+  let redirectToGoogleAuth = async () => {
+      let currentUrl = new URL(window.location.href);
+      let authToken = currentUrl.searchParams.get("token");
+      let code = currentUrl.searchParams.get("code");
+      let page = currentUrl.searchParams.get("page");
+
+      if(authToken){
+          let result = await fetch(`https://lingo-practices-bot-oas5u.ondigitalocean.app/api/tg/auth/google/generate-callback-url/${authToken}`);
+          let redirectUrl = await result.json();
+          window.location.href = redirectUrl;
+      } else if(code){
+          let state = currentUrl.searchParams.get("state");
+          let redirectUrl = `https://lingo-practices-bot-oas5u.ondigitalocean.app/api/tg/auth/google/callback?code=${code}&state=${state}`;
+          window.location.href = redirectUrl;
+      } else if(page){
+          if(page === 'privacypolicy'){
+              window.location.href = 'https://docs.google.com/document/d/1gpldlMbymdNMmwVeQNMcw0daCE2mHjWd-WRxc-irR-k/edit?usp=sharing';
+          } else{
+              window.location.href = 'https://docs.google.com/document/d/101b6wp5wfL6XLcytjlWSvN54G540cBNj03vrbkXaFhY/edit?usp=sharing';
+          }
+      }
+  }
+  redirectToGoogleAuth();
+</script>
 
 </html>
