@@ -442,6 +442,7 @@ pr.then(() => {
   .catch(() => {
     closeLoader();
   })
-  .finally(() => {
-    isRedirecting = false;
-  });
+
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) closeLoader();
+});
