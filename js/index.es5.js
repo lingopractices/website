@@ -424,27 +424,6 @@ function closeLoader() {
   }
 }
 
-// function closeLoader() {
-//   if (loader.classList.contains("openLoader")) {
-//     loader.classList.remove("openLoader");
-//   }
-// }
-
-// const pr = new Promise((resolve, reject) => {
-//   if (isRedirecting) {
-//     resolve();
-//   } else {
-//     reject();
-//   }
-// });
-
-// pr.then(() => {
-//   openLoader();
-// })
-//   .catch(() => {
-//     closeLoader();
-//   })
-
 document.addEventListener("visibilitychange", () => {
   if (document.hidden)
     closeLoader();
