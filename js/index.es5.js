@@ -418,14 +418,21 @@ $("[href='#privacyPolicy']").click(function (e) {
 // loader
 const loader = document.querySelector(".wrapper-container");
 
-// function openLoader() {
-//   document.body.classList.add('NOScroll');
-//   loader.classList.add("loader-open");
-// }
 
-// function closeLoader() {
-//   if (loader.classList.contains("loader-open")) {
-//     loader.classList.remove("loader-open");
-//     document.body.classList.remove('NOScroll')
-//   }
-// }
+if(isRedirecting) {
+  openLoader();
+} else {
+  closeLoader();
+}
+
+function openLoader() {
+  document.body.classList.add('NOScroll');
+  loader.classList.add("loader-open");
+}
+
+function closeLoader() {
+  if (loader.classList.contains("loader-open")) {
+    loader.classList.remove("loader-open");
+    document.body.classList.remove('NOScroll')
+  }
+}
