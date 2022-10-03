@@ -435,3 +435,7 @@ function closeLoader() {
     document.body.classList.remove("NOScroll");
   }
 }
+
+loader.addEventListener('click', () => {
+  closeLoader()
+})
