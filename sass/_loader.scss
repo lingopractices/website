@@ -4,7 +4,7 @@
   transform: translate(-50%, -50%);
   background-color: #3f8ae0;
   align-items: center;
-  display: none;
+  display: flex;
   height: 100vh;
   width: 100vw;
   z-index: 228228228;
@@ -60,8 +60,8 @@
   }
 }
 
-.openLoader {
-  display: flex;
+.closeLoader {
+  display: none;
 }
 
 @keyframes cube-loader {

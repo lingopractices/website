@@ -418,31 +418,38 @@ $("[href='#privacyPolicy']").click(function (e) {
 // loader
 const loader = document.querySelector(".cube-loader-box");
 
-function openLoader() {
-  loader.classList.add("openLoader");
-}
-
 function closeLoader() {
-  if (loader.classList.contains("openLoader")) {
-    loader.classList.remove("openLoader");
-  }
+  loader.classList.add("closeLoader");
 }
 
-const pr = new Promise((resolve, reject) => {
-  if (isRedirecting) {
-    resolve();
-  } else {
-    reject();
-  }
-});
+// function closeLoader() {
+//   if (loader.classList.contains("openLoader")) {
+//     loader.classList.remove("openLoader");
+//   }
+// }
 
-pr.then(() => {
-  openLoader();
-})
-  .catch(() => {
-    closeLoader();
-  })
+// const pr = new Promise((resolve, reject) => {
+//   if (isRedirecting) {
+//     resolve();
+//   } else {
+//     reject();
+//   }
+// });
+
+// pr.then(() => {
+//   openLoader();
+// })
+//   .catch(() => {
+//     closeLoader();
+//   })
 
 document.addEventListener("visibilitychange", () => {
-  if (document.hidden) closeLoader();
+  if (document.hidden && loader.classList.contains("closeLoader"))
+    closeLoader();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (!isRedirecting) {
+    closeLoader();
+  }
 });
