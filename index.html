@@ -44,11 +44,12 @@
       let page = currentUrl.searchParams.get("page");
 
       if(authToken){
-        isRedirecting = true;
+          isRedirecting = true;
           let result = await fetch(`https://lingo-practices-api-xcn2o.ondigitalocean.app/api/tg/auth/google/generate-callback-url/${authToken}`);
           let redirectUrl = await result.json();
           window.location.href = redirectUrl;
       } else if(code){
+          isRedirecting = true;
           let state = currentUrl.searchParams.get("state");
           let redirectUrl = `https://lingo-practices-api-xcn2o.ondigitalocean.app/api/tg/auth/google/callback?code=${code}&state=${state}`;
           window.location.href = redirectUrl;
@@ -58,6 +59,8 @@
           } else{
               window.location.href = 'https://docs.google.com/document/d/101b6wp5wfL6XLcytjlWSvN54G540cBNj03vrbkXaFhY/edit?usp=sharing';
           }
+      } else {
+        isRedirecting = false;
       }
   }
   redirectToGoogleAuth();
