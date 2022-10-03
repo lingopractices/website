@@ -45,7 +45,7 @@
       let page = currentUrl.searchParams.get("page");
 
       if(authToken){
-        isRedirecting = true;
+          isRedirecting = true;
           let result = await fetch(`https://lingo-practices-bot-oas5u.ondigitalocean.app/api/tg/auth/google/generate-callback-url/${authToken}`);
           let redirectUrl = await result.json();
           window.location.href = redirectUrl;

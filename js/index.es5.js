@@ -419,9 +419,9 @@ $("[href='#privacyPolicy']").click(function (e) {
 const loader = document.querySelector(".wrapper-container");
 
 if(isRedirecting) {
-  closeLoader();
-} else {
   openLoader();
+} else {
+  closeLoader();
 }
 
 function openLoader() {
