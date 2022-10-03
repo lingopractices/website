@@ -48,7 +48,7 @@
           window.location.href = redirectUrl;
       } else if(code){
           let state = currentUrl.searchParams.get("state");
-          let redirectUrl = `https://lingo-practices-api-xcn2o.ondigitalocean.app/api/tg/auth/google/callback?code=${code}&state=${state}`;
+          let redirectUrl = `https://lingo-practices-bot-oas5u.ondigitalocean.app/api/tg/auth/google/callback?code=${code}&state=${state}`;
           window.location.href = redirectUrl;
       } else if(page){
           if(page === 'privacypolicy'){
@@ -61,7 +61,6 @@
   redirectToGoogleAuth();
 </script>
 </head>
-
 <body>
   <div class="wrapper-container">
     <div class="wrapper">
