@@ -418,12 +418,6 @@ $("[href='#privacyPolicy']").click(function (e) {
 // loader
 const loader = document.querySelector(".cube-loader-box");
 
-if (isRedirecting) {
-  openLoader();
-} else {
-  closeLoader();
-}
-
 function openLoader() {
   loader.classList.add("openLoader");
 }
@@ -433,3 +427,23 @@ function closeLoader() {
     loader.classList.remove("openLoader");
   }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const pr = new Promise((resolve, reject) => {
+    if (isRedirecting) {
+      resolve();
+    } else {
+      reject();
+    }
+  });
+
+  pr.then(() => {
+    openLoader();
+  })
+    .catch(() => {
+      closeLoader();
+    })
+    .finally(() => {
+      isRedirecting = false;
+    });
+});
