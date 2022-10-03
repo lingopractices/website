@@ -385,8 +385,8 @@ cookiesBtn.addEventListener("click", allowCookies);
 
 var modal = document.querySelector(".policy-modal");
 var background = document.querySelector(".background");
-var allowPolicyBtn = document.querySelector(".policy-modal__btn");
-var closeBtn = document.querySelector(".policy-modal__close");
+// var allowPolicyBtn = document.querySelector(".policy-modal__btn");
+// var closeBtn = document.querySelector(".policy-modal__close");
 
 const displayModal = () => {
   modal.style.display = "block";
@@ -400,15 +400,15 @@ const hideModal = () => {
   body.style.overflowY = "visible";
 };
 
-allowPolicyBtn.addEventListener("click", function () {
-  hideModal();
-  localStorage.setItem("cookiesAllowed", true);
-  document.querySelector(".cookies").style.display = "none";
-});
+// allowPolicyBtn.addEventListener("click", function () {
+//   hideModal();
+//   localStorage.setItem("cookiesAllowed", true);
+//   document.querySelector(".cookies").style.display = "none";
+// });
 
-closeBtn.addEventListener("click", function () {
-  hideModal();
-});
+// closeBtn.addEventListener("click", function () {
+//   hideModal();
+// });
 
 $("[href='#privacyPolicy']").click(function (e) {
   e.preventDefault();
@@ -418,21 +418,20 @@ $("[href='#privacyPolicy']").click(function (e) {
 // loader
 const loader = document.querySelector(".wrapper-container");
 
-
-if(isRedirecting) {
+if (isRedirecting) {
   openLoader();
 } else {
   closeLoader();
 }
 
 function openLoader() {
-  document.body.classList.add('NOScroll');
+  document.body.classList.add("NOScroll");
   loader.classList.add("loader-open");
 }
 
 function closeLoader() {
   if (loader.classList.contains("loader-open")) {
     loader.classList.remove("loader-open");
-    document.body.classList.remove('NOScroll')
+    document.body.classList.remove("NOScroll");
   }
 }
