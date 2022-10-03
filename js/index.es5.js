@@ -416,7 +416,7 @@ $("[href='#privacyPolicy']").click(function (e) {
 });
 
 // loader
-const loader = document.querySelector(".wrapper-container");
+const loader = document.querySelector(".cube-loader-box");
 
 if (isRedirecting) {
   openLoader();
@@ -425,17 +425,11 @@ if (isRedirecting) {
 }
 
 function openLoader() {
-  document.body.classList.add("NOScroll");
-  loader.classList.add("loader-open");
+  loader.classList.add("openLoader");
 }
 
 function closeLoader() {
-  if (loader.classList.contains("loader-open")) {
-    loader.classList.remove("loader-open");
-    document.body.classList.remove("NOScroll");
+  if (loader.classList.contains("openLoader")) {
+    loader.classList.remove("openLoader");
   }
 }
-
-loader.addEventListener('click', () => {
-  closeLoader()
-})
