@@ -444,7 +444,7 @@ function closeLoader() {
 //   })
 
 document.addEventListener("visibilitychange", () => {
-  if (document.hidden && loader.classList.contains("closeLoader"))
+  if (document.hidden && !loader.classList.contains("closeLoader"))
     closeLoader();
 });
 
