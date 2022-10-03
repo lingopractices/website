@@ -39,6 +39,10 @@ body {
   position: relative;
 }
 
+.NOScroll {
+  overflow-y: hidden ;
+}
+
 section {
   @media (max-width: $bp-medium) {
     margin-left: 2.13% !important;
