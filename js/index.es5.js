@@ -418,7 +418,6 @@ $("[href='#privacyPolicy']").click(function (e) {
 // loader
 const loader = document.querySelector(".wrapper-container");
 
-
 // function openLoader() {
 //   document.body.classList.add('NOScroll');
 //   loader.classList.add("loader-open");
@@ -427,8 +426,6 @@ const loader = document.querySelector(".wrapper-container");
 // function closeLoader() {
 //   if (loader.classList.contains("loader-open")) {
 //     loader.classList.remove("loader-open");
-//     body.classList.remove('NOScroll');
+//     document.body.classList.remove('NOScroll')
 //   }
 // }
-
-
