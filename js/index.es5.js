@@ -428,22 +428,20 @@ function closeLoader() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const pr = new Promise((resolve, reject) => {
-    if (isRedirecting) {
-      resolve();
-    } else {
-      reject();
-    }
-  });
-
-  pr.then(() => {
-    openLoader();
-  })
-    .catch(() => {
-      closeLoader();
-    })
-    .finally(() => {
-      isRedirecting = false;
-    });
+const pr = new Promise((resolve, reject) => {
+  if (isRedirecting) {
+    resolve();
+  } else {
+    reject();
+  }
 });
+
+pr.then(() => {
+  openLoader();
+})
+  .catch(() => {
+    closeLoader();
+  })
+  .finally(() => {
+    isRedirecting = false;
+  });
