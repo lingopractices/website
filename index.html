@@ -71,9 +71,10 @@
         } else if(code){
             isRedirecting = true;
             let state = currentUrl.searchParams.get("state");
+            let requestId = new URLSearchParams(state).get('requestId');
 
             setTimeout(() => {
-              let redirectUrl = `${getUrl(currentUrl)}/api/tg/auth/google/callback?code=${code}&state=${state}`;
+              let redirectUrl = `${getUrl(currentUrl)}/api/tg/auth/google/callback?code=${code}&state=${requestId}`;
               window.location.href = redirectUrl;
             }, 0)
         } else if(page){
