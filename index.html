@@ -51,8 +51,9 @@
         const devUrl = 'https://shark-app-2zmo7.ondigitalocean.app';
 
         const getUrl = (url) => {
+          const evironment = 'ENVIRONMENT';
           let state = url.searchParams.get("state");
-          let isDev = new URLSearchParams(state).get('ENVIRONMENT');
+          let isDev = new URLSearchParams(state).get(evironment) || url.searchParams.get(evironment);
 
           return isDev ? devUrl : productionUrl
         }
