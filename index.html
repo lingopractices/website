@@ -50,24 +50,30 @@
         const productionUrl = 'https://lingo-practices-api-xcn2o.ondigitalocean.app';
         const devUrl = 'https://shark-app-2zmo7.ondigitalocean.app';
 
+        const getUrl = (url) => {
+          let state = url.searchParams.get("state");
+          let isDev = new URLSearchParams(state).get('ENVIRONMENT');
+
+          return isDev ? devUrl : productionUrl
+        }
+
         let currentUrl = new URL(window.location.href);
         let authToken = currentUrl.searchParams.get("token");
         let code = currentUrl.searchParams.get("code");
         let page = currentUrl.searchParams.get("page");
-        let isDev = currentUrl.searchParams.get("dev");
 
-        const finalUrl = isDev ? devUrl : productionUrl;
-  
         if(authToken){
             isRedirecting = true;
-            let result = await fetch(`${finalUrl}/api/tg/auth/google/generate-callback-url/${authToken}`);
+            let result = await fetch(`${getUrl(currentUrl)}/api/tg/auth/google/generate-callback-url/${authToken}`);
             let redirectUrl = await result.json();
             window.location.href = redirectUrl;
         } else if(code){
             isRedirecting = true;
             let state = currentUrl.searchParams.get("state");
+            let requestId = new URLSearchParams(state).get('requestId');
+
             setTimeout(() => {
-              let redirectUrl = `${finalUrl}/api/tg/auth/google/callback?code=${code}&state=${state}`;
+              let redirectUrl = `${getUrl(currentUrl)}/api/tg/auth/google/callback?code=${code}&requestId=${requestId}`;
               window.location.href = redirectUrl;
             }, 0)
         } else if(page){
@@ -76,7 +82,7 @@
             } else{
                 window.location.href = 'https://docs.google.com/document/d/101b6wp5wfL6XLcytjlWSvN54G540cBNj03vrbkXaFhY/edit?usp=sharing';
             }
-        }
+        } 
     }
     redirectToGoogleAuth();
   </script>
